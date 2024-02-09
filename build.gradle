@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-       mavenCentral()
+        mavenCentral()
         maven { setUrl("https://maven.vaadin.com/vaadin-prereleases") }
         maven { setUrl("https://repo.spring.io/milestone") }
     }
@@ -25,25 +25,15 @@ repositories {
     maven { setUrl("https://maven.vaadin.com/vaadin-prereleases") }
     maven { setUrl("https://repo.spring.io/milestone") }
     maven {
-            setUrl("https://maven.vaadin.com/vaadin-addons")
+        setUrl("https://maven.vaadin.com/vaadin-addons")
     }
-}
-pluginManagement {
-  repositories {
-      maven { url = 'https://maven.vaadin.com/vaadin-prereleases' }
-      gradlePluginPortal()
-  }
-  plugins {
-    id 'com.vaadin' version "${vaadinVersion}"
-  }
-}
-
-ext {
-    set('vaadinVersion', "24.4.0.alpha3")
 }
 
 dependencies {
-    implementation 'com.vaadin:hilla-react-spring-boot-starter'
+    implementation 'com.vaadin.hilla:hilla-react'
+    implementation 'com.vaadin:vaadin-spring'
+    implementation 'com.vaadin:vaadin-dev-server'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
