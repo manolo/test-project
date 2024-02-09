@@ -7,57 +7,48 @@ buildscript {
 }
 
 plugins {
-    id 'java'
-    id 'org.springframework.boot' version '3.1.2'
-    id 'io.spring.dependency-management' version '1.1.2'
-    id 'com.vaadin' version "24.4.0.alpha3"
+	id 'java'
+	id 'org.springframework.boot' version '3.1.2'
+	id 'io.spring.dependency-management' version '1.1.2'
+	id 'com.vaadin' version "24.4.0.alpha3"
 }
 
 group = 'com.vaadin.initializer'
 version = '0.0.1-SNAPSHOT'
 
 java {
-    sourceCompatibility = '17'
+	sourceCompatibility = '17'
 }
 
 repositories {
-    mavenCentral()
-    maven { setUrl("https://maven.vaadin.com/vaadin-prereleases") }
-    maven { setUrl("https://repo.spring.io/milestone") }
-    maven {
-            setUrl("https://maven.vaadin.com/vaadin-addons")
-    }
-}
-pluginManagement {
-  repositories {
-      maven { url = 'https://maven.vaadin.com/vaadin-prereleases' }
-      gradlePluginPortal()
-  }
-  plugins {
-    id 'com.vaadin' version "${vaadinVersion}"
-  }
+	mavenCentral()
+	maven { setUrl("https://maven.vaadin.com/vaadin-prereleases") }
+	maven { setUrl("https://repo.spring.io/milestone") }
+	maven {
+			setUrl("https://maven.vaadin.com/vaadin-addons")
+	}	
 }
 
 ext {
-    set('vaadinVersion', "24.4.0.alpha3")
+	set('vaadinVersion', "24.4.0.alpha3")
 }
 
 dependencies {
-    implementation 'com.vaadin:hilla-react-spring-boot-starter'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'com.vaadin:hilla-react-spring-boot-starter'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 dependencyManagement {
-    imports {
-        mavenBom "com.vaadin:vaadin-bom:${vaadinVersion}"
-    }
+	imports {
+		mavenBom "com.vaadin:vaadin-bom:${vaadinVersion}"
+	}
 }
 
 tasks.named('bootBuildImage') {
-    builder = 'paketobuildpacks/builder-jammy-base:latest'
+	builder = 'paketobuildpacks/builder-jammy-base:latest'
 }
 
 tasks.named('test') {
-    useJUnitPlatform()
+	useJUnitPlatform()
 }
